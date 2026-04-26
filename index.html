@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>李商隐 · 锦瑟 | 诗歌赏析</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600;700&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5efe0;
+            background-image: radial-gradient(circle at 20% 30%, #f9f3e7 5%, #ede0cc 95%);
+            font-family: 'Noto Serif SC', 'Times New Roman', '宋体', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            margin: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M20 20 L30 18 L25 30 Z" fill="%23d9c8a8" opacity="0.08"/><circle cx="70" cy="25" r="3" fill="%23b8a88a" opacity="0.1"/><path d="M80 70 L90 65 L88 78 Z" fill="%23c4b595" opacity="0.07"/></svg>');
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .learning-card {
+            position: relative;
+            z-index: 2;
+            max-width: 750px;
+            width: 100%;
+            background: #fffef7;
+            box-shadow: 0 25px 50px -10px rgba(60, 40, 20, 0.25), 0 0 0 1px rgba(200, 170, 120, 0.3);
+            border-radius: 2.5rem 1rem 2.5rem 1rem;
+            padding: 2.2rem 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            border: 1px solid #dac29c;
+        }
+
+        .title-section {
+            text-align: center;
+            border-bottom: 2px dashed #c9aa7a;
+            padding-bottom: 0.8rem;
+        }
+
+        .main-title {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: #4e3620;
+            letter-spacing: 8px;
+            text-shadow: 2px 2px 0 rgba(200, 160, 100, 0.2);
+            font-family: 'ZCOOL KuaiLe', 'Noto Serif SC', cursive;
+            margin-bottom: 0.2rem;
+            line-height: 1.2;
+        }
+
+        .sub {
+            font-size: 1.1rem;
+            color: #7b5e3b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-top: 0.2rem;
+        }
+
+        .sub i {
+            font-size: 0.9rem;
+            color: #b48b5a;
+        }
+
+        .poet-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f3e9d2;
+            border-radius: 60px;
+            padding: 0.5rem 1.8rem;
+            margin: 0 auto;
+            width: fit-content;
+            gap: 0.8rem;
+            border: 1px solid #cfb387;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .poet-badge:hover {
+            background: #ede0c4;
+            transform: translateY(-1px);
+        }
+
+        .poet-badge span {
+            font-weight: 600;
+            color: #5b3e1f;
+            font-size: 1.2rem;
+        }
+
+        .dynasty {
+            background: #b28b5b;
+            color: #fef7e9;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .poem-box {
+            background: #faf5e9;
+            border: 1px solid #decba4;
+            border-radius: 2rem;
+            padding: 1.8rem 1.2rem;
+            text-align: center;
+            box-shadow: inset 0 0 15px rgba(180, 140, 80, 0.15);
+            margin: 0.5rem 0;
+        }
+
+        .poem-text {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #3e2e1f;
+            line-height: 2.2;
+            letter-spacing: 4px;
+            word-spacing: 6px;
+        }
+
+        .poem-text p {
+            margin: 0.2rem 0;
+        }
+
+        .highlight {
+            color: #b45f2a;
+            font-weight: 700;
+            text-decoration: underline wavy #c8915c 1.5px;
+            text-underline-offset: 6px;
+        }
+
+        .knowledge-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .card {
+            background: #fffbf2;
+            border: 1px solid #e5cfaa;
+            border-radius: 1.5rem;
+            padding: 1.2rem 1.5rem;
+            box-shadow: 0 8px 18px rgba(140, 100, 50, 0.08);
+            transition: all 0.25s ease;
+        }
+
+        .card:hover {
+            border-color: #c49a6c;
+            box-shadow: 0 12px 22px rgba(130, 80, 30, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #5c3b1f;
+            border-left: 5px solid #b98a5c;
+            padding-left: 0.8rem;
+        }
+
+        .card-header i {
+            color: #b2682c;
+            font-size: 1.3rem;
+        }
+
+        .card-content {
+            color: #3b2b1a;
+            line-height: 1.7;
+            font-size: 1rem;
+            text-align: justify;
+        }
+
+        .allusions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-top: 0.6rem;
+        }
+
+        .allusion-item {
+            background: #efe0cd;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: #3a2c1c;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .allusion-item:hover {
+            background: #e0ceb0;
+            transform: scale(1.03);
+        }
+
+        .reflection-quote {
+            font-style: italic;
+            color: #785e40;
+            background: #f7f0e1;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        hr {
+            border: 0.5px dashed #cfb794;
+            margin: 0.4rem 0;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #8b7352;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .discussion-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1rem;
+        }
+
+        .discussion-tag {
+            background: #e3cfb0;
+            padding: 0.2rem 1rem;
+            border-radius: 18px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            user-select: none;
+        }
+
+        .discussion-tag:hover {
+            background: #d4b98c;
+        }
+
+        @media (max-width: 500px) {
+            .learning-card {
+                padding: 1.5rem 1rem;
+            }
+            .poem-text {
+                font-size: 1.4rem;
+            }
+            .main-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="learning-card">
+        <!-- 标题 -->
+        <div class="title-section">
+            <h1 class="main-title">锦 瑟</h1>
+            <div class="sub">
+                <i class="fas fa-feather-alt"></i> 李商隐 · 晚唐 <i class="fas fa-feather-alt"></i>
+            </div>
+            <div class="poet-badge" id="poetBadge">
+                <span>李商隐</span>
+                <span class="dynasty">义山 · 玉谿生</span>
+            </div>
+        </div>
+
+        <!-- 诗歌原文 -->
+        <div class="poem-box">
+            <div class="poem-text" id="poemText">
+                <p>锦瑟无端五十弦，</p>
+                <p>一弦一柱思<span class="highlight">华年</span>。</p>
+                <p>庄生晓梦迷蝴蝶，</p>
+                <p>望帝春心托杜鹃。</p>
+                <p>沧海月明珠有泪，</p>
+                <p>蓝田日暖玉生烟。</p>
+                <p>此情可待成追忆，</p>
+                <p>只是当时已<span class="highlight">惘然</span>。</p>
+            </div>
+        </div>
+
+        <!-- 诗作背景 -->
+        <div class="knowledge-grid">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-scroll"></i> 诗作背景
+                </div>
+                <div class="card-content">
+                    <strong>《锦瑟》</strong>是李商隐晚年所作，历来被视为其最难索解的作品之一。诗以"锦瑟"起兴，借物抒怀，融合了身世之感、爱情之痛与人生怅惘。历代解读包括"悼亡说""自伤说""爱情追忆说"等多种观点。
+                </div>
+            </div>
+
+            <!-- 典故详解 -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-book-open"></i> 核心典故 · 四组意象
+                </div>
+                <div class="card-content">
+                    <div class="allusions" id="allusionContainer">
+                        <div class="allusion-item" data-allusion="butterfly"><i class="fas fa-mask"></i> 庄周梦蝶</div>
+                        <div class="allusion-item" data-allusion="cuckoo"><i class="fas fa-dove"></i> 望帝杜鹃</div>
+                        <div class="allusion-item" data-allusion="pearl"><i class="fas fa-gem"></i> 沧海珠泪</div>
+                        <div class="allusion-item" data-allusion="jade"><i class="fas fa-smoke"></i> ★蓝田玉烟</div>
+                    </div>
+                    <p style="margin-top:0.8rem;">
+                        <strong>庄生晓梦：</strong>庄子梦中化蝶，醒来惘然，喻人生虚幻。<br>
+                        <strong>望帝春心：</strong>蜀王杜宇化为杜鹃，啼血哀鸣，象征至死不渝的思念。<br>
+                        <strong>珠有泪：</strong>鲛人泣珠，月满珠圆，却浸满泪水，暗含凄美。<br>
+                        <strong>玉生烟：</strong>蓝田美玉在日照下升腾烟霭，可望而不可即，象征美好事物的朦胧。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 情感与艺术特色 -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-heart"></i> 情感线索 · 惘然之思
+                </div>
+                <div class="card-content">
+                    "此情可待成追忆，只是当时已惘然" —— 这种深深的迷惘与失落，不仅是爱情回忆，更是对逝去年华、理想破灭的总结。李商隐以密集的典故构建了哀婉朦胧的意境。
+                </div>
+                <div style="margin-top: 1rem; display: flex; justify-content: flex-end;">
+                    <div class="reflection-quote">
+                        <i class="fas fa-quote-right"></i> 思华年，已惘然
+                    </div>
+                </div>
+            </div>
+
+            <!-- 思考讨论 -->
+            <div class="card" style="background: #fbf5e8;">
+                <div class="card-header">
+                    <i class="fas fa-lightbulb"></i> 思考与探讨
+                </div>
+                <div class="card-content">
+                    <p><strong>📌 讨论：</strong>你认为"锦瑟"是咏物、悼亡，还是自伤身世？结合"华年""惘然"等词，说说你的理解。</p>
+                    <div class="discussion-tags">
+                        <span class="discussion-tag" data-view="悼亡说"><i class="far fa-comment-dots"></i> 悼亡说</span>
+                        <span class="discussion-tag" data-view="自伤说"><i class="far fa-comment-dots"></i> 自伤说</span>
+                        <span class="discussion-tag" data-view="爱情追忆"><i class="far fa-comment-dots"></i> 爱情追忆</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <div class="footer-note">
+            <span><i class="fas fa-feather"></i> 李商隐 · 义山</span>
+            <span><i class="fas fa-book"></i> 《锦瑟》诗歌赏析</span>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // ========== 典故点击交互 ==========
+            const allusionItems = document.querySelectorAll('.allusion-item');
+            const poemLines = document.querySelectorAll('#poemText p');
+
+            const allusionMap = {
+                'butterfly': {
+                    lineIndex: 2,
+                    message: '"庄生晓梦迷蝴蝶" — 人生如梦，虚实难辨',
+                    icon: '🦋'
+                },
+                'cuckoo': {
+                    lineIndex: 3,
+                    message: '"望帝春心托杜鹃" — 至死不休的深切思念',
+                    icon: '🐦'
+                },
+                'pearl': {
+                    lineIndex: 4,
+                    message: '"沧海月明珠有泪" — 凄美孤寂，泪落如珠',
+                    icon: '💧'
+                },
+                'jade': {
+                    lineIndex: 5,
+                    message: '"蓝田日暖玉生烟" — 美好而不可触及',
+                    icon: '✨'
+                }
+            };
+
+            function showToast(message, icon = '') {
+                // 移除已有toast
+                const existingToast = document.querySelector('.custom-toast');
+                if (existingToast) existingToast.remove();
+
+                const toast = document.createElement('div');
+                toast.className = 'custom-toast';
+                toast.innerHTML = icon ? `${icon} ${message}` : message;
+                toast.style.cssText = `
+                    position: fixed;
+                    bottom: 30px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: #4e3620;
+                    color: #fcf5e6;
+                    padding: 0.7rem 1.8rem;
+                    border-radius: 40px;
+                    font-size: 0.95rem;
+                    z-index: 999;
+                    box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+                    letter-spacing: 0.5px;
+                    font-family: 'Noto Serif SC', serif;
+                    animation: fadeInUp 0.3s ease;
+                `;
+                document.body.appendChild(toast);
+                setTimeout(() => {
+                    toast.style.opacity = '0';
+                    toast.style.transition = 'opacity 0.6s';
+                    setTimeout(() => toast.remove(), 600);
+                }, 2000);
+            }
+
+            // 添加动画样式
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeInUp {
+                    from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+                    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+                }
+                .poem-line-highlight {
+                    background: rgba(180, 95, 42, 0.15);
+                    border-radius: 8px;
+                    transition: background 0.4s ease;
+                }
+            `;
+            document.head.appendChild(style);
+
+            allusionItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const allusion = this.dataset.allusion;
+                    const info = allusionMap[allusion];
+
+                    if (info) {
+                        // 高亮对应诗句
+                        poemLines.forEach((line, index) => {
+                            line.classList.remove('poem-line-highlight');
+                            if (index === info.lineIndex) {
+                                line.classList.add('poem-line-highlight');
+                                setTimeout(() => line.classList.remove('poem-line-highlight'), 2000);
+                            }
+                        });
+
+                        // 显示提示
+                        showToast(info.message, info.icon);
+
+                        // 按钮动画
+                        this.style.transform = 'scale(1.05)';
+                        this.style.background = '#d4b98c';
+                        setTimeout(() => {
+                            this.style.transform = 'scale(1)';
+                            this.style.background = '#efe0cd';
+                        }, 300);
+                    }
+                });
+            });
+
+            // ========== 诗人徽章点击 ==========
+            const poetBadge = document.getElementById('poetBadge');
+            poetBadge.addEventListener('click', () => {
+                showToast('李商隐（约813年—约858年），字义山，号玉谿生，晚唐著名诗人。与杜牧合称"小李杜"。', '📜');
+            });
+
+            // ========== 讨论标签点击 ==========
+            const discussionTags = document.querySelectorAll('.discussion-tag');
+            discussionTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    const view = this.dataset.view;
+                    discussionTags.forEach(t => {
+                        t.style.background = '#e3cfb0';
+                        t.style.fontWeight = 'normal';
+                    });
+                    this.style.background = '#c49a6c';
+                    this.style.fontWeight = 'bold';
+                    this.style.color = '#fff';
+                    showToast(`你选择了「${view}」，可以在课堂讨论中分享你的见解。`, '💬');
+                });
+            });
+
+            console.log('《锦瑟》诗歌赏析页面已就绪');
+        })();
+    </script>
+</body>
+</html>
